@@ -16,6 +16,7 @@
             @method('DELETE')
             <input type="submit" style="display:none">
             <p class='delete'>[<span onclick="return deletePost(this);">delete</span>]</p>
+            <button type='button' onclick="return deletePost(this);">削除</button>
         </form>
             <div class='content'>
                 <p class='body'>{{ $post -> body }}</p>
