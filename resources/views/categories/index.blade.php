@@ -26,6 +26,7 @@
                 </form>
             @endforeach
         </div>
+        <div class='footer'>[<a href='/'>back</a>]</div>
         <div class='paginate'>
             {{ $posts -> links() }}
         </div>
