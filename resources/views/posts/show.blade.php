@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1 class='title'>{{ $post -> title }}</h1>
+        <small>{{ $post -> user -> name }}</small>
         <p class="edit">[<a href="/posts/{{ $post -> id }}/edit">edit</a>]</p>
         <form action="/posts/{{ $post -> id }}" id="form_delete" method="post">
             @csrf

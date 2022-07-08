@@ -13,15 +13,15 @@
         {{Auth::user()->name}}
         <h1>Blog Name</h1>
         <p class='create'>[<a href='/posts/create'>create</a>]</p>
-        <div class='posts'>
-            @foreach ($posts as $post)
-                <div class='post'>
-                    <h2 class='title'>
+        <div class='own_posts'>
+            @foreach ($own_posts as $post)
+                <div class='own_post'>
+                    <h2 class='own_title'>
                         <a href="/posts/{{ $post -> id }}">{{ $post -> title }}</a>
                     </h2>
                     <small>{{ $post -> user -> name }}</small>
                     <a href="/categories/{{ $post -> category -> id }}">{{ $post -> category -> name }}</a>
-                    <p class='body'>{{ $post -> body }}</p>
+                    <p class='own_body'>{{ $post -> body }}</p>
                 </div>
                 <form action="/posts/{{ $post -> id }}" id="form_delete_{{ $post -> id }}" method="post">
                     @csrf
@@ -33,7 +33,7 @@
         </div>
         <div class='footer'>[<a href='/'>back</a>]</div>
         <div class='paginate'>
-            {{ $posts -> links() }}
+            {{ $own_posts -> links() }}
         </div>
         <script>
             function deletePost(e, id)
