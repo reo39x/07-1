@@ -12,17 +12,25 @@ class Post extends Model
     protected $fillable = [
         'title',
         'body',
-        'category_id'
+        'category_id',
+        'user_id'
         ];
         
     public function getPaginateByLimit(int $limit_count = 5)
     {
         // updated_atで降順に並べたあと、limitで件数制限をかける
-        return $this::with('category') -> orderBy('updated_at', 'DESC') -> paginate($limit_count);
+        return $this::with(['category'],['user']) -> orderBy('updated_at', 'DESC') -> paginate($limit_count);
     }
     
+    // Categoryに対するリレーション
     public function category()
     {
         return $this -> belongsTo('App\Category');
+    }
+    
+    // Userに対するリレーション
+    public function user()
+    {
+        return $this -> belongsTo('App\User');
     }
 }
